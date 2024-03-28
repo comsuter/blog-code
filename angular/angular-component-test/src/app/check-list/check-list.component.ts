@@ -17,16 +17,19 @@ export class CheckListComponent {
     this.checkList = this.checkListDataService.initList(this.INIT_TOTAL_CNT);
   }
 
-  onChangeCnt(op: string) {
-    this.checkListDataService.changeTotalCntByOperation(op);
+  // 항목 증감 서비스 호출
+  onChangeCnt(operaion: string) {
+    this.checkListDataService.changeTotalCntByOperation(operaion);
   }
 
+  // 체크 설정 서비스 호출
   onChecked(isChecked: boolean, checkedItem: CheckItemModel) {
     checkedItem.isChecked = isChecked
     this.newCheckedItem = JSON.parse(JSON.stringify(checkedItem));
     this.checkListDataService.checkItem(checkedItem);
   }
 
+  // 체크 해제 서비스 호출
   unCheckedItem(idx: number) {
     this.checkListDataService.unCheckItem(idx);
   }

@@ -17,6 +17,7 @@ export class CheckListDataService {
     return this.checkList;
   }
 
+  // 항목 증감
   changeTotalCntByOperation(operation: string) {
     if (operation === '+') {
       const totalCnt = this.checkList.length
