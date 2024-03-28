@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CheckItem } from './check-item';
+import { CheckItemModel } from './check-item';
 import { CheckListDataService } from './check-list-data.service';
 
 @Component({
@@ -10,8 +10,8 @@ import { CheckListDataService } from './check-list-data.service';
 export class CheckListComponent {
 
   INIT_TOTAL_CNT: number = 3;
-  checkList: CheckItem[] = [];
-  curCheckedItem!: CheckItem;
+  checkList: CheckItemModel[] = [];
+  newCheckedItem!: CheckItemModel;
 
   constructor(public checkListDataService: CheckListDataService) {
     this.checkList = this.checkListDataService.initList(this.INIT_TOTAL_CNT);
@@ -21,9 +21,9 @@ export class CheckListComponent {
     this.checkListDataService.changeTotalCntByOperation(op);
   }
 
-  onChecked(isChecked: boolean, checkedItem: CheckItem) {
+  onChecked(isChecked: boolean, checkedItem: CheckItemModel) {
     checkedItem.isChecked = isChecked
-    this.curCheckedItem = JSON.parse(JSON.stringify(checkedItem));
+    this.newCheckedItem = JSON.parse(JSON.stringify(checkedItem));
     this.checkListDataService.checkItem(checkedItem);
   }
 

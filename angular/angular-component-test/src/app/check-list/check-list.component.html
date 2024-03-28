@@ -14,5 +14,5 @@
   </span>
 </div>
 
-<app-check-list-result [checkItem]="curCheckedItem"
-  (onSelectedToRemoveItem)="unCheckedItem($event)"></app-check-list-result>
+<app-check-list-result [checkItem]="newCheckedItem"
+  (_onSelectedToRemoveItem)="unCheckedItem($event)"></app-check-list-result>

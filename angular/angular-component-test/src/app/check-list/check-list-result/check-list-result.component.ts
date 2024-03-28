@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CheckItem } from '../check-item';
+import { CheckItemModel } from '../check-item';
 
 @Component({
   selector: 'app-check-list-result',
@@ -8,15 +8,15 @@ import { CheckItem } from '../check-item';
 })
 export class CheckListResultComponent {
   _checkedCnt: number = 0;
-  _checkedData: CheckItem[] = [];
-  @Output() onSelectedToRemoveItem = new EventEmitter<number>();
+  _checkedData: CheckItemModel[] = [];
+  @Output() _onSelectedToRemoveItem = new EventEmitter<number>();
 
   constructor() {
     this._checkedData = [];
   }
 
   @Input()
-  set checkItem(curItemEvent: CheckItem) {
+  set checkItem(curItemEvent: CheckItemModel) {
     if (!curItemEvent) {
       return;
     }
@@ -29,8 +29,9 @@ export class CheckListResultComponent {
     this._checkedCnt = this._checkedData.length;
   }
 
+  // 체크박스 삭제 버튼 클릭
   onRemove(idx: number) {
-    this.onSelectedToRemoveItem.emit(this._checkedData[idx].idx);
+    this._onSelectedToRemoveItem.emit(this._checkedData[idx].idx);
     this._checkedData = this._checkedData.filter((val, _idx) => _idx !== idx);
     this._checkedCnt = this._checkedData.length;
   }
