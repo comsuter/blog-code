@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class CheckListResultComponent {
   _checkedCnt: number = 0;
-  _checkedData: string[] = [];
+  _checkedData: any[] = [];
   @Output() onSelectedToRemoveItem = new EventEmitter<number>();
 
   @Input()
@@ -20,8 +20,9 @@ export class CheckListResultComponent {
     this._checkedCnt = this._checkedData.length;
   }
 
-  onRemove(idx: number) {
-  //   this.onSelectedToRemoveItem.emit(this._checkedData[idx]);
-  //   // this._checkedData = this._checkedData.filter((val, _idx) => _idx !== idx);
+  onRemove(idx: any) {
+
+    this.onSelectedToRemoveItem.emit(this._checkedData[idx]);
+    this._checkedData = this._checkedData.filter((val, _idx) => _idx !== idx);
   }
 }
