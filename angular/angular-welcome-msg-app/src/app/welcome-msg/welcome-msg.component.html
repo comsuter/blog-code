@@ -1,0 +1,5 @@
+<div class="contents">
+  <input type="text" placeholder="사용자 이름" [(ngModel)]="userName" (ngModelChange)="onChange()">
+  <button type="button" (click)="showWelcomeMsg()">입력</button>
+  <span>{{welcomeMsg}}</span>
+</div>
