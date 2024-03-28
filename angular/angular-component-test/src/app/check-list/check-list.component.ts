@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CheckItem } from './check-item';
+import { CheckListDataService } from './check-list-data.service';
 
 @Component({
   selector: 'app-check-list',
@@ -7,27 +9,25 @@ import { Component } from '@angular/core';
 })
 export class CheckListComponent {
 
-  checkList: string[] = [];
-  checkedResult: boolean[] = [];
-  checkedResultData: string[] = [];
+  INIT_TOTAL_CNT: number = 3;
+  checkList: CheckItem[] = [];
+  curCheckedItem!: CheckItem;
 
-  constructor() {
-    this.checkList = [
-      '카리나',
-      '차은우',
-      '윈터',
-      '민지'
-    ];
-    this.checkList.forEach(() => this.checkedResult.push(false));
+  constructor(public checkListDataService: CheckListDataService) {
+    this.checkList = this.checkListDataService.initList(this.INIT_TOTAL_CNT);
   }
 
-  extractCheckedResult() {
-    this.checkedResultData = [];
-    this.checkedResult.forEach((isChecked, idx) => {
-      if (isChecked) {
-        this.checkedResultData.push(this.checkList[idx]);
-      }
-    });
+  onChangeCnt(op: string) {
+    this.checkListDataService.changeTotalCntByOperation(op);
   }
 
+  onChecked(isChecked: boolean, checkedItem: CheckItem) {
+    checkedItem.isChecked = isChecked
+    this.curCheckedItem = JSON.parse(JSON.stringify(checkedItem));
+    this.checkListDataService.checkItem(checkedItem);
+  }
+
+  unCheckedItem(idx: number) {
+    this.checkListDataService.unCheckItem(idx);
+  }
 }
