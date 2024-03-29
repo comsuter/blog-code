@@ -27,11 +27,11 @@ export class AppComponent {
 
   // 사용자 생성
   addUser() {
-    const newUser = { name: this.user.name, age: this.user.age };
+    const newUser = { id: this.user.id, name: this.user.name, age: this.user.age };
     const callback = (result: any) => {
       const newUser: User = result;
       console.log(JSON.stringify(newUser));
-      alert(`사용자 생성\nID:${newUser.id}\n이름:${newUser.name}\n나이:${newUser.age}`);
+      alert(`사용자 생성\nID : ${newUser.id}\n이름 : ${newUser.name}\n나이 : ${newUser.age}`);
     };
 
     this.userService.addUser(newUser, callback);
@@ -48,7 +48,7 @@ export class AppComponent {
     const callback = (result: any) => {
       const newUser: User = result;
       console.log(JSON.stringify(newUser));
-      alert(`사용자 변경\nID:${newUser.id}\n이름:${newUser.name}\n나이:${newUser.age}`);
+      alert(`사용자 변경\nID : ${newUser.id}\n이름 : ${newUser.name}\n나이 : ${newUser.age}`);
     }
 
     this.userService.modifyUser(this.user, callback);
@@ -57,12 +57,12 @@ export class AppComponent {
   // 사용자 삭제
   removeUser(id: string) {
     const onSuccess = (result: any) => {
-      if (result.status === 204) {
-        alert(`사용자 ID:${id} 삭제 성공`);
+      //if (result.status === 204) {
+        alert(`사용자 ID : ${id} 삭제 성공`);
         console.log(result);
         return;
-      }
-      alert(`사용자 ID:${id} 삭제 실패`);
+      //}
+      //alert(`사용자 ID:${id} 삭제 실패`);
     };
 
     this.userService.removeUser(id, onSuccess);

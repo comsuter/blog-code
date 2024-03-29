@@ -8,8 +8,9 @@
 </div>
 <div>
   <h4>사용자 등록 / 수정</h4>
-  사용자 ID : <input type="number" name="user-id" [(ngModel)]="user.id"> <br/>
+  사용자 ID : <input type="text" name="user-id" [(ngModel)]="user.id"> <br/>
   사용자 이름 : <input type="text" name="user-name" [(ngModel)]="user.name"> <br/>
   사용자 나이 : <input type="number" for="user-age" [(ngModel)]="user.age" />
-  <button type="button" (click)="modifyUser()">사용자 등록/수정</button>
+  <button type="button" (click)="addUser()">등록</button>
+  <button type="button" (click)="modifyUser()">수정</button>
 </div>
