@@ -1,0 +1,30 @@
+<h4>{{title}}</h4>
+
+<form (ngSubmit)="onSubmit()" (ngReset)="onReset()" #prodForm="ngForm" novalidate>
+  <div>
+    상품명 : <input type="text" name="prod-name" [(ngModel)]="product.name" required />
+  </div>
+
+  <div>
+    상품가격 : <input type="number" name="prod-price" [(ngModel)]="product.price" required min="1000" max="100000" pattern="[0-9]\d*" />
+    (1000원 이상 ~ 10만원 이하)
+  </div>
+
+  <div>
+    상품수량 : <input type="number" name="prod-qty" [(ngModel)]="product.qty" required min="1" max="100" pattern="[1-9]\d*" />
+    (1개 이상 ~ 100개 이하)
+  </div>
+
+  <div>
+    <textarea name="prod-desc" rows="4" placeholder="상품 상세 설명" [(ngModel)]="product.desc" required minlength="5" maxlength="100"></textarea>
+  </div>
+
+  <!-- <ul>
+    <li *ngFor="let err of errors">에러 : {{err | json}}</li>
+  </ul> -->
+
+  <div>
+    <button type="submit" [disabled]="!prodForm.form.valid">상품 등록</button>
+    <button type="reset">초기화</button>
+  </div>
+</form>

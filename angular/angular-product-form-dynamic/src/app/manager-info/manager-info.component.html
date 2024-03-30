@@ -1,0 +1,18 @@
+<fieldset [formGroup]="manager">
+  <div class="container">
+    <div class="row">
+      <div>
+        <div class="input-group">
+          <span>이름</span>
+          <input type="text" class="form-control" [id]="'manager-name-' + idx" formControlName="name"/>
+        </div>
+      </div>
+      <div>
+        <div class="input-group">
+          <span>연락처</span>
+          <input type="text" class="form-control" [id]="'manager-phone-' + idx" formControlName="phoneNum"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</fieldset>

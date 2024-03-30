@@ -1,0 +1,47 @@
+<h2 class="pl-4 my-3">{{title}}</h2>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="prodForm" novalidate>
+
+  <h4>상품 정보</h4>
+  <fieldset>
+    <div>
+      상품명 : <input type="text" formControlName="name"/>
+    </div>
+
+    <div>
+      상품가격 : <input type="number" formControlName="price"/>
+      (1000원 이상 ~ 10만원 이하)
+    </div>
+
+    <div>
+      상품수량 : <input type="number" formControlName="qty"/>
+      (1개 이상 ~ 100개 이하)
+    </div>
+    <div>
+      <textarea formControlName="desc" rows="4" placeholder="상품 상세 설명"></textarea>
+    </div>
+  </fieldset>
+
+  <h4>담당자 정보</h4>
+  <fieldset>
+    <div>
+      <button type="button" (click)="addManager()">+</button>
+      <button type="button" (click)="removeManager()">-</button>
+    </div>
+    <div formArrayName="managers">
+      <div *ngFor="let manager of managers.controls; let i = index">
+        <app-manager-info [idx]="i" [manager]="manager"></app-manager-info>
+      </div>
+    </div>
+  </fieldset>
+
+
+  <h4>제출 및 초기화</h4>
+  <fieldset>
+    <div>
+      <button type="submit" [disabled]="!prodForm.valid">등록</button>
+      <button type="reset">초기화</button>
+    </div>
+  </fieldset>
+
+</form>
