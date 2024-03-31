@@ -1,0 +1,9 @@
+<h2>상품 상세</h2>
+
+<div *ngIf="productInfo">
+  <h3>{{ productInfo.name }}</h3>
+  <h4>{{ productInfo.price | currency }}</h4>
+  <p>{{ productInfo.description }}</p>
+  <button type="button" (click)="addToCart(productInfo)">구매</button>
+</div>
+

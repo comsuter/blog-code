@@ -1,0 +1,17 @@
+<h2>상품 목록</h2>
+
+<div *ngFor="let product of productList; index as i">
+  <h3>
+    <a [title]="product.name + ' details'"
+      [routerLink]="['/products', product.id]">
+      {{ product.name }}</a>
+  </h3>
+
+  <p *ngIf="product.description">
+    설명 : {{ product.description }}
+  </p>
+
+  <button type="button" (click)="share()">공유</button>
+
+  <app-product-alerts [childProduct]="product" (childNotify)="onNotify()"></app-product-alerts>
+</div>
