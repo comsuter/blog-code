@@ -17,6 +17,8 @@ import { CountdownLocalVarParentComponent } from './parent-to-child-localVar-or-
 import { CountdownViewChildParentComponent } from './parent-to-child-localVar-or-viewChild/countdown-parent-by-viewChild.component';
 import { MissionControlComponent } from './bidirectional-service/mission-control.component';
 import { AstronautComponent } from './bidirectional-service/astronaut.component';
+import { ItemDetailComponent } from './input-and-output/item-detail/item-detail.component';
+import { ItemListComponent } from './input-and-output/item-list/item-list.component';
 
 
 @NgModule({
@@ -40,7 +42,10 @@ import { AstronautComponent } from './bidirectional-service/astronaut.component'
     CountdownViewChildParentComponent,
 
     MissionControlComponent,
-    AstronautComponent
+    AstronautComponent,
+
+    ItemDetailComponent,
+    ItemListComponent
   ],
   imports: [
     BrowserModule,
