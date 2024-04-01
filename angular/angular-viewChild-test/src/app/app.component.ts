@@ -3,15 +3,16 @@ import { Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angu
 @Component({
   selector: 'app-root',
   template: `
+
+    <!-- @ViewChild -->
     <app-test-parent></app-test-parent>
 
-    <!-- 아래 방법 1 -->
+    <!-- 아래 방법 1 : elementRef-->
     {{elementRef}}<br>
 
-    <!-- 아래 방법 2 -->
+    <!-- 아래 방법 2 : 템플릿 참조 변수-->
     <input type="text" #myInput/><br />
     <input type="text" ref-myInput/><br />
-
     {{myInput}}<br />
     {{myInputVal}}<br />
     {{myInputList}}<br />
